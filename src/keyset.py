@@ -2,7 +2,7 @@
 
 class keyset:
     
-    def __init__(self, keylist)
+    def __init__(self, keylist = [])
         self.keylist = keylist;
         
     def get_keylist(self)
