@@ -9,6 +9,27 @@
 #       and finding the one that matches the device name. Ask David
 #       for the device name
 #       If COM port stuff is complicated enough we may want to look into making it user-selectable
+#       Add in a reasonable time-out while the data is transferred
 
-def update_keyboard(key_list)
-    
+from xmodem import XMODEM
+import serial
+key_identifier = 0xDEAD
+key_width = 50
+key_height = 50
+rotation = 90
+offset = (0,0)
+
+def update_keyboard(keylist, port, offset):
+
+    #Generate the file to send
+    #Apply offset and rotation to the image
+    for keys in keylist:
+
+    #Send the file
+    ser = serial.Serial(port)
+
+def generate_binary(keylist, offset):
+
+#offset is a tuple that signals where to start the image (0,0) is the top left
+def offset_rotate(keylist, offset, rotation):
+

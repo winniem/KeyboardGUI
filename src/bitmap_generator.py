@@ -10,19 +10,17 @@ import json
 #       file to be modified
 #Output: Modified file
 
-img_width = 26
-img_height = 36
-#white = (255,)
-#black = (0,)
+img_width = 50
+img_height = 50
 font_file = 'ARIALUNI.TTF'
-big_pt = 20
-small_pt = 12
-letter = 'F12'
+big_pt = 22
+small_pt = 16
 mode = 'L'
 base_colour = 'white'
 text_colour = 'black'
 bitmap_file = 'bitmaps.txt'
 data = {}
+origin = (4, 0)
 
 #def bitmap_generator()
     
@@ -41,8 +39,8 @@ if __name__ == '__main__':
         else:
             fnt = ImageFont.truetype(font=font_file, size=big_pt)
         draw = ImageDraw.Draw(base)
-        font_width, font_height = draw.textsize(letter)
-        draw.text(((img_width-font_width)/4, (img_height-font_height)/4), keys.get_letter(), font=fnt, fill=text_colour)
+        font_width, font_height = draw.textsize(keys.get_letter())
+        draw.text(origin, keys.get_letter(), font=fnt, fill=text_colour)
         # Shows you the images
         # base.show()
         # Will print out the strings
