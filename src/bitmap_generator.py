@@ -13,7 +13,7 @@ import json
 
 img_width = 50
 img_height = 50
-font_file = 'ARIALUNI.TTF'
+font_file = 'arialbd.ttf'
 big_pt = 22
 small_pt = 16
 mode = 'L'
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         font_width, font_height = draw.textsize(keys.get_letter())
         draw.text(origin, keys.get_letter(), font=fnt, fill=text_colour)
         # Shows you the images
-        # base.show()
+        base.show()
         # Will print out the strings
         #bytestring = str(base.tobytes())
         #print(bytestring)
