@@ -15,5 +15,5 @@ def read_charlist(filename):
 #Test
 if __name__ == '__main__':
     char_list = read_charlist('bitmaps.json')
-    key_list = char_list[0:12]
-    up.update_keyboard(key_list, 'COM5', 90)
+    key_list = char_list[12:24]
+    up.update_keyboard(key_list, 'COM9', 270)
