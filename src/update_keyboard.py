@@ -53,8 +53,8 @@ def update_keyboard(keylist, port, rotation):
         #print(bytes(key_identifier))
 
         count = 0
-        f.write(key_identifier)
         for index, image in zip(range(max_keys), key_data):
+            f.write(key_identifier)
             f.write(count.to_bytes(1, 'big'))
             count += 1
             f.write((int(image[0], 16)).to_bytes(1, 'big'))
