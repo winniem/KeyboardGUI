@@ -1,6 +1,7 @@
 # Generates a JSON file with bitmap objects
 
 from PIL import Image, ImageDraw, ImageFont
+
 import parse_usb_hid_keys_h as parse
 import sys
 import json
@@ -18,7 +19,7 @@ small_pt = 16
 mode = 'L'
 base_colour = 'white'
 text_colour = 'black'
-bitmap_file = 'bitmaps.txt'
+bitmap_file = 'bitmaps.json'
 data = {}
 origin = (4, 0)
 
@@ -46,13 +47,21 @@ if __name__ == '__main__':
         # Will print out the strings
         #bytestring = str(base.tobytes())
         #print(bytestring)
+        #
+        # temp_bytes = base.tobytes()
+        # temp_hex = temp_bytes.hex()
+        # new_bytes = bytes.fromhex(temp_hex)
+
+        # temp_str = temp_bytes.decode().encode()
+        # Image.frombytes(data=temp_bytes, size=(50, 50), mode='L').show()
+
 
         data['keys'].append({
             'keycode': keys.get_keycode(),
             'height': img_height,
             'width': img_width,
             'letter': keys.get_letter(),
-            'bitmap': str(base.tobytes())
+            'bitmap': base.tobytes().hex()
         })
 
     with open(bitmap_file, 'w') as outfile:
