@@ -70,11 +70,11 @@ def update_keyboard(keylist, port, rotation):
             #     print(bytes(image[i]), encoding='utf-8')
 
     # Send the file
-    ser = serial.Serial(port, timeout=0)
+    ser = serial.Serial(port, timeout=1,  baudrate=115200)
 
     # Not reading
     def getc(size, timeout=1):
-        return None
+        return ser.read(size)
 
     # Data to send
     def putc(data, timeout=1):
@@ -83,4 +83,6 @@ def update_keyboard(keylist, port, rotation):
 
     modem = XMODEM(getc, putc)
     stream = open(binary_file, 'rb')
-    modem.send(stream)
+    print(modem.send(stream, timeout=2))
+
+    ser.close()
