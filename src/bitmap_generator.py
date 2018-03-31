@@ -1,6 +1,6 @@
 # Generates a JSON file with bitmap objects
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageOps
 
 import parse_usb_hid_keys_h as parse
 import sys
@@ -42,8 +42,18 @@ if __name__ == '__main__':
         draw = ImageDraw.Draw(base)
         font_width, font_height = draw.textsize(keys.get_letter())
         draw.text(origin, keys.get_letter(), font=fnt, fill=text_colour)
+
+        temp = ImageOps.autocontrast(base, )
+
+        base = base.filter(ImageFilter.SHARPEN)
         # Shows you the images
-        base.show()
+        # base.show()
+
+        # temp = base.filter(ImageFilter.SHARPEN)
+        # temp.show()
+        # temp.convert(mode='1').show()
+        # base.convert(mode='1').show()
+
         # Will print out the strings
         #bytestring = str(base.tobytes())
         #print(bytestring)

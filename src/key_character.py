@@ -24,3 +24,8 @@ class key_character:
 
     def get_letter(self):
         return self.letter
+
+    def new_bitmap(self, height, width, bitmap):
+        self.bitmap = bitmap
+        self.height = height
+        self.width = width
