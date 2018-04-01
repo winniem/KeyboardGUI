@@ -73,7 +73,7 @@ class GUI(QWidget):
         enter.activated.connect(self.new_layout)
 
         # Bottom pushbuttons
-        save_layout = QPushButton("Save Layout Changes")
+        save_layout = QPushButton("Save Layout")
         save_layout.clicked.connect(lambda: self.save())
         delete_layout = QPushButton("Delete Layout")
         delete_layout.clicked.connect(lambda: self.delete())
@@ -81,10 +81,14 @@ class GUI(QWidget):
         update_keyboard.clicked.connect(lambda: self.upload())
 
         # Laying out bottom buttons
+        bottom_grid = QGridLayout()
+        bottom_grid.addWidget(save_layout, 0, 0)
+        bottom_grid.addWidget(delete_layout, 0, 1)
+        bottom_grid.addWidget(update_keyboard, 0, 2)
+        for i in range(3):
+            bottom_grid.setColumnMinimumWidth(i, 110)   #So the buttons are equal width
         hbox = QHBoxLayout()
-        hbox.addWidget(save_layout)
-        hbox.addWidget(delete_layout)
-        hbox.addWidget(update_keyboard)
+        hbox.addLayout(bottom_grid)
 
         # Putting all the boxes together
         vbox = QVBoxLayout()
@@ -170,11 +174,12 @@ class GUI(QWidget):
 
     def new_layout(self):
         if self.keyboard_list.currentText != self.current_layout[0]:
-            temp_keylist = self.current_layout[1]
+            temp_keylist =list(self.current_layout[1])          #Should be a copy of the list
             temp_name = self.keyboard_list.currentText()
             self.keylist.append((temp_name, temp_keylist))
             self.current_layout = self.keylist[-1]      #Python for last element in a list
             self.keyboard_list.addItem(temp_name)
+            self.keyboard_list.setCurrentIndex(self.keyboard_list.count()-1)
 
     # #Returns list of all ports
     # #each port_list object has
