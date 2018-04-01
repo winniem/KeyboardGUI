@@ -154,18 +154,19 @@ class GUI(QWidget):
         list_index = 0
         counter = 0
 
-        # Finds the current list
-        for name, key in self.keylist:
-            if name == self.keyboard_list.currentText():
-                list_index = counter
-                break
-            counter += 1
-        del self.keylist[list_index]
+        if len(self.keylist) > 1:
+            # Finds the current list
+            for name, key in self.keylist:
+                if name == self.keyboard_list.currentText():
+                    list_index = counter
+                    break
+                counter += 1
+            del self.keylist[list_index]
 
-        index = self.keyboard_list.currentIndex()
-        self.keyboard_list.removeItem(index)
+            index = self.keyboard_list.currentIndex()
+            self.keyboard_list.removeItem(index)
 
-        js.write_key_lists(self.keylist, keyfile)
+            js.write_key_lists(self.keylist, keyfile)
 
     def new_layout(self):
         if self.keyboard_list.currentText != self.current_layout[0]:
