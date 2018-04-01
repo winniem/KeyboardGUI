@@ -1,0 +1,14 @@
+import json_operations as js
+# Generates an initial set of keylists
+
+if __name__ == '__main__':
+    char_list = js.read_char_list('bitmaps.json')
+
+    key_lists = []
+    key_lists.append(('Default 1', char_list[0:12]))
+    key_lists.append(('Default 2', char_list[12:24]))
+    key_lists.append(('Default 3', char_list[24:36]))
+
+    js.write_key_lists(key_lists, 'keylists.json')
+
+

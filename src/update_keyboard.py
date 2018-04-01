@@ -11,7 +11,6 @@ import serial
 from PIL import Image
 import time
 
-
 def update_keyboard(keylist, port, rotation):
     key_identifier = bytearray.fromhex('DEAD')
     key_data = []
