@@ -91,5 +91,6 @@ def write_key_lists(key_lists, filename):
                 'letter': key.get_letter(),
                 'bitmap': key.get_bitmap()
             })
+
     with open(filename, 'w') as outfile:
         json.dump(data, outfile)
