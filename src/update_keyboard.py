@@ -49,6 +49,8 @@ def update_keyboard(keylist, port, rotation):
 
     modem = XMODEM(getc, putc)
     stream = open(binary_file, 'rb')
-    modem.send(stream, timeout=2)
+    send_result = modem.send(stream, timeout=2)
 
     ser.close()
+
+    return send_result

@@ -12,9 +12,6 @@ from serial.tools import list_ports
 charfile = 'bitmaps.json'
 keyfile = 'keylists.json'
 
-# TODO: Add COM ports
-# TODO: (Bonus) Change push buttons text to images
-
 class GUI(QWidget):
 
     def __init__(self):
@@ -32,22 +29,6 @@ class GUI(QWidget):
     #Sets up the base window.
     def initUI(self):
         self.setWindowTitle('Dynamic Keyboard')
-        #
-        # self.menuBar = QMenuBar(self)
-        # port_menu = self.menuBar.addMenu('File')
-        #
-        # ports = self.find_ports()
-        # ports_menu = port_menu.addMenu('Ports')
-        # rescan = QAction('Rescan Ports')
-        # ports_menu.addAction(rescan)
-        # port_list = []
-        # for port in ports:
-        #     new_port = QAction(port)
-        #     port_list.append(new_port)
-        #     ports_menu.addAction(new_port)
-
-        # top_menu = QHBoxLayout()
-        # top_menu.addWidget(menu_bar)
 
         button_grid = QGridLayout()
 
@@ -126,11 +107,12 @@ class GUI(QWidget):
         for character in self.charlist:
             letters.append(character.get_letter())
 
-        item, ok = dialog.getItem(dialog, 'Select Key', 'Select a new key:', letters)
+        item, ok = dialog.getItem(dialog, 'Select Key', 'Select a new key:', letters, editable=False)
 
         if ok:
             self.buttons[position].setText(item)
             self.names[position] = item
+
             #
             # for char in self.charlist:
             #     if char.get_letter() == item:
@@ -167,7 +149,18 @@ class GUI(QWidget):
                         if char.get_letter() == name:
                             temp_layout[index] = char
                             break
-            up.update_keyboard(temp_layout, self.port, self.rotation)
+            if up.update_keyboard(temp_layout, self.port, self.rotation) == False:
+                self.upload_error()
+
+        else:
+            self.upload_error()
+
+    def upload_error(self):
+        error_msg = QMessageBox()
+        error_msg.setWindowTitle('Error')
+        error_msg.setText('Error updating keyboard. \nPlease check the connection and try again.')
+        error_msg.exec()
+
 
     def save(self):
         temp_layout = []
