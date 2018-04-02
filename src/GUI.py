@@ -24,7 +24,7 @@ class GUI(QWidget):
         self.names = []
         self.buttons = []
         self.keyboard_list = QComboBox()
-        self.current_layout = self.keylist[0]
+        self.current_layout = list(self.keylist[0])
         self.port = 'COM9'          # To not be hard coded later
         self.rotation = 270          # Degrees to rotate the image
         self.initUI()
@@ -131,17 +131,17 @@ class GUI(QWidget):
         if ok:
             self.buttons[position].setText(item)
             self.names[position] = item
-
-            for char in self.charlist:
-                if char.get_letter() == item:
-                    self.current_layout[1][position] = char
-                    break
+            #
+            # for char in self.charlist:
+            #     if char.get_letter() == item:
+            #         self.current_layout[1][position] = char
+            #         break
 
     def select_layout(self):
         index = 0
         for name, key in self.keylist:
             if name == self.keyboard_list.currentText():
-                self.current_layout = self.keylist[index]
+                self.current_layout = list(self.keylist[index])
             index += 1
         self.names = []
         for key in self.current_layout[1]:
@@ -159,7 +159,15 @@ class GUI(QWidget):
             for p in list_of_ports:
                 self.port = p.device
 
-            up.update_keyboard(self.current_layout[1], self.port, self.rotation)
+            temp_layout = list(self.current_layout[1])
+
+            for index, name in enumerate(self.names):
+                if name != temp_layout[index].get_letter():
+                    for char in self.charlist:
+                        if char.get_letter() == name:
+                            temp_layout[index] = char
+                            break
+            up.update_keyboard(temp_layout, self.port, self.rotation)
 
     def save(self):
         temp_layout = []
@@ -206,7 +214,6 @@ class GUI(QWidget):
             temp_keylist =list(self.current_layout[1])          #Should be a copy of the list
             temp_name = self.keyboard_list.currentText()
             self.keylist.append((temp_name, temp_keylist))
-            self.current_layout = self.keylist[-1]      #Python for last element in a list
+            self.current_layout = list(self.keylist[-1])      #Python for last element in a list
             self.keyboard_list.addItem(temp_name)
             self.keyboard_list.setCurrentIndex(self.keyboard_list.count()-1)
-
