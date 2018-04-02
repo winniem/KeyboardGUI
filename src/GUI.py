@@ -5,6 +5,9 @@ from PyQt5.QtGui import QKeySequence
 import json_operations as js
 import update_keyboard as up
 from PyQt5.QtCore import Qt
+import sys
+import glob
+from serial.tools import list_ports
 
 charfile = 'bitmaps.json'
 keyfile = 'keylists.json'
@@ -29,6 +32,22 @@ class GUI(QWidget):
     #Sets up the base window.
     def initUI(self):
         self.setWindowTitle('Dynamic Keyboard')
+        #
+        # self.menuBar = QMenuBar(self)
+        # port_menu = self.menuBar.addMenu('File')
+        #
+        # ports = self.find_ports()
+        # ports_menu = port_menu.addMenu('Ports')
+        # rescan = QAction('Rescan Ports')
+        # ports_menu.addAction(rescan)
+        # port_list = []
+        # for port in ports:
+        #     new_port = QAction(port)
+        #     port_list.append(new_port)
+        #     ports_menu.addAction(new_port)
+
+        # top_menu = QHBoxLayout()
+        # top_menu.addWidget(menu_bar)
 
         button_grid = QGridLayout()
 
@@ -57,9 +76,6 @@ class GUI(QWidget):
         self.buttons[9].clicked.connect(lambda: self.change_key(9))
         self.buttons[10].clicked.connect(lambda: self.change_key(10))
         self.buttons[11].clicked.connect(lambda: self.change_key(11))
-
-       # for button in self.buttons:
-        #    button.clicked.connect(lambda: self.show_dialog(button))
 
         # Top menus
         menu_box = QHBoxLayout()
@@ -92,6 +108,8 @@ class GUI(QWidget):
 
         # Putting all the boxes together
         vbox = QVBoxLayout()
+        # minwidth = self.menuBar.minimumSizeHint()
+        # vbox.addSpacing(minwidth.width())
         vbox.addStretch(1)
         vbox.addLayout(menu_box)
         vbox.addStretch(3)
@@ -101,6 +119,7 @@ class GUI(QWidget):
         vbox.addStretch(1)
 
         self.setLayout(vbox)
+
         self.show()
 
     def change_key(self, position):
@@ -130,7 +149,14 @@ class GUI(QWidget):
             button.setText(self.names[index])
 
     def upload(self):
-        up.update_keyboard(self.current_layout[1], self.port, self.rotation)
+
+        ports = list_ports.grep('03EB:2421')
+
+        if ports.len() > 0:
+            for p in ports:
+                self.port = p[0]
+
+            up.update_keyboard(self.current_layout[1], self.port, self.rotation)
 
     def save(self):
         temp_layout = []
@@ -181,10 +207,3 @@ class GUI(QWidget):
             self.keyboard_list.addItem(temp_name)
             self.keyboard_list.setCurrentIndex(self.keyboard_list.count()-1)
 
-    # #Returns list of all ports
-    # #each port_list object has
-    # # [0] = com port name
-    # # [1] = name of connected object
-    #
-    # def ports():
-    #     return list(serial.tools.list_ports.comports())
