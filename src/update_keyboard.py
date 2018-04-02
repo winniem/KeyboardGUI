@@ -3,7 +3,7 @@
 
 # Inputs: key_list - a list of key_character objects, port, image rotation (counterclockwise, in degrees)
 # Outputs: Sends the key_character data in the keylist to the connected microcontroller
-# TODO: Implement some sort of check/behaviour if the image is too large (50x50 should be the max
+# TODO: Implement some sort of check/behaviour if the image is too large (50x50 should be the max)
 #       recommendation is the PIL.ImagesOps.fit() function
 
 from xmodem import XMODEM
