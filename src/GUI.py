@@ -108,8 +108,6 @@ class GUI(QWidget):
 
         # Putting all the boxes together
         vbox = QVBoxLayout()
-        # minwidth = self.menuBar.minimumSizeHint()
-        # vbox.addSpacing(minwidth.width())
         vbox.addStretch(1)
         vbox.addLayout(menu_box)
         vbox.addStretch(3)
@@ -134,6 +132,10 @@ class GUI(QWidget):
             self.buttons[position].setText(item)
             self.names[position] = item
 
+            for char in self.charlist:
+                if char.get_letter() == item:
+                    self.current_layout[1][position] = char
+                    break
 
     def select_layout(self):
         index = 0
