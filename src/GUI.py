@@ -149,11 +149,12 @@ class GUI(QWidget):
             button.setText(self.names[index])
 
     def upload(self):
-
         ports = list_ports.grep('03EB:2421')
 
-        if ports.len() > 0:
-            for p in ports:
+        list_of_ports = list(ports)
+
+        if len(list_of_ports) > 0:
+            for p in list_of_ports:
                 self.port = p[0]
 
             up.update_keyboard(self.current_layout[1], self.port, self.rotation)
