@@ -26,7 +26,7 @@ class GUI(QWidget):
         self.keyboard_list = QComboBox()
         self.current_layout = self.keylist[0]
         self.port = 'COM9'          # To not be hard coded later
-        self.rotation = 90          # Degrees to rotate the image
+        self.rotation = 270          # Degrees to rotate the image
         self.initUI()
 
     #Sets up the base window.
@@ -155,7 +155,7 @@ class GUI(QWidget):
 
         if len(list_of_ports) > 0:
             for p in list_of_ports:
-                self.port = p[0]
+                self.port = p.device
 
             up.update_keyboard(self.current_layout[1], self.port, self.rotation)
 

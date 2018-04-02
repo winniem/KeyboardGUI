@@ -13,7 +13,7 @@ import json
 
 img_width = 50
 img_height = 50
-font_file = 'arialbd.ttf'
+font_file = 'FRADM.TTF'
 big_pt = 22
 small_pt = 16
 mode = 'L'
@@ -43,9 +43,11 @@ if __name__ == '__main__':
         font_width, font_height = draw.textsize(keys.get_letter())
         draw.text(origin, keys.get_letter(), font=fnt, fill=text_colour)
 
-        temp = ImageOps.autocontrast(base, )
+        #base = ImageOps.autocontrast(base, )
 
-        base = base.filter(ImageFilter.SHARPEN)
+        #base = PIL.ImageEnhance.Color(base, 0)
+
+        base = base.filter(ImageFilter.EDGE_ENHANCE).filter(ImageFilter.EDGE_ENHANCE_MORE)
         # Shows you the images
         # base.show()
 
