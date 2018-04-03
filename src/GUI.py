@@ -163,6 +163,8 @@ class GUI(QWidget):
 
 
     def save(self):
+        self.new_layout()
+
         temp_layout = []
         list_index = 0
         counter = 0
@@ -203,7 +205,7 @@ class GUI(QWidget):
             js.write_key_lists(self.keylist, keyfile)
 
     def new_layout(self):
-        if self.keyboard_list.currentText != self.current_layout[0]:
+        if self.keyboard_list.currentText() != self.current_layout[0]:
             temp_keylist =list(self.current_layout[1])          #Should be a copy of the list
             temp_name = self.keyboard_list.currentText()
             self.keylist.append((temp_name, temp_keylist))

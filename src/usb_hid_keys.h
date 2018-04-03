@@ -76,24 +76,6 @@
 #define KEY_9 0x26 // Keyboard 9 and (
 #define KEY_0 0x27 // Keyboard 0 and )
 
-//#define KEY_ENTER 0x28 // Keyboard Return (ENTER)
-//#define KEY_ESC 0x29 // Keyboard ESCAPE
-//#define KEY_BACKSPACE 0x2a // Keyboard DELETE (Backspace)
-//#define KEY_TAB 0x2b // Keyboard Tab
-//#define KEY_SPACE 0x2c // Keyboard Spacebar
-//#define KEY_MINUS 0x2d // Keyboard - and _
-//#define KEY_EQUAL 0x2e // Keyboard = and +
-//#define KEY_LEFTBRACE 0x2f // Keyboard [ and {
-//#define KEY_RIGHTBRACE 0x30 // Keyboard ] and }
-//#define KEY_BACKSLASH 0x31 // Keyboard \ and |
-//#define KEY_HASHTILDE 0x32 // Keyboard Non-US # and ~
-//#define KEY_SEMICOLON 0x33 // Keyboard ; and :
-//#define KEY_APOSTROPHE 0x34 // Keyboard ' and "
-//#define KEY_GRAVE 0x35 // Keyboard ` and ~
-//#define KEY_COMMA 0x36 // Keyboard , and <
-//#define KEY_DOT 0x37 // Keyboard . and >
-//#define KEY_SLASH 0x38 // Keyboard / and ?
-//#define KEY_CAPSLOCK 0x39 // Keyboard Caps Lock
 
 #define KEY_F1 0x3a // Keyboard F1
 #define KEY_F2 0x3b // Keyboard F2
@@ -108,15 +90,46 @@
 #define KEY_F11 0x44 // Keyboard F11
 #define KEY_F12 0x45 // Keyboard F12
 
+//#define KEY_ENTER 0x28 // Keyboard Return (ENTER)
+#define KEY_ESC 0x29 // Keyboard ESCAPE
+//#define KEY_BACKSPACE 0x2a // Keyboard DELETE (Backspace)
+#define KEY_TAB 0x2b // Keyboard Tab
+//#define KEY_SPACE 0x2c // Keyboard Spacebar
+#define KEY_- 0x2d // Keyboard - and _
+//#define KEY_MINUS 0x2d // Keyboard - and _
+//#define KEY_EQUAL 0x2e // Keyboard = and +
+#define KEY_= 0x2e // Keyboard = and +
+#define KEY_[ 0x2f // Keyboard [ and {
+//#define KEY_LEFTBRACE 0x2f // Keyboard [ and {
+#define KEY_] 0x30 // Keyboard ] and }
+//#define KEY_RIGHTBRACE 0x30 // Keyboard ] and }
+#define KEY_\ 0x31 // Keyboard \ and |
+//#define KEY_BACKSLASH 0x31 // Keyboard \ and |
+//#define KEY_HASHTILDE 0x32 // Keyboard Non-US # and ~
+#define KEY_; 0x33 // Keyboard ; and :
+//#define KEY_SEMICOLON 0x33 // Keyboard ; and :
+#define KEY_' 0x34 // Keyboard ' and "
+//#define KEY_APOSTROPHE 0x34 // Keyboard ' and "
+#define KEY_` 0x35 // Keyboard ` and ~
+//#define KEY_GRAVE 0x35 // Keyboard ` and ~
+#define KEY_, 0x36 // Keyboard , and <
+//#define KEY_COMMA 0x36 // Keyboard , and <
+#define KEY_. 0x37 // Keyboard . and >
+//#define KEY_DOT 0x37 // Keyboard . and >
+#define KEY_/ 0x38 // Keyboard / and ?
+//#define KEY_SLASH 0x38 // Keyboard / and ?
+//#define KEY_CAPSLOCK 0x39 // Keyboard Caps Lock
+
+
 //#define KEY_SYSRQ 0x46 // Keyboard Print Screen
 //#define KEY_SCROLLLOCK 0x47 // Keyboard Scroll Lock
 //#define KEY_PAUSE 0x48 // Keyboard Pause
-//#define KEY_INSERT 0x49 // Keyboard Insert
-//#define KEY_HOME 0x4a // Keyboard Home
-//#define KEY_PAGEUP 0x4b // Keyboard Page Up
-//#define KEY_DELETE 0x4c // Keyboard Delete Forward
-//#define KEY_END 0x4d // Keyboard End
-//#define KEY_PAGEDOWN 0x4e // Keyboard Page Down
+#define KEY_INS 0x49 // Keyboard Insert
+#define KEY_HOME 0x4a // Keyboard Home
+//#define KEY_PGUP 0x4b // Keyboard Page Up
+#define KEY_DEL 0x4c // Keyboard Delete Forward
+#define KEY_END 0x4d // Keyboard End
+//#define KEY_PGDWN 0x4e // Keyboard Page Down
 //#define KEY_RIGHT 0x4f // Keyboard Right Arrow
 //#define KEY_LEFT 0x50 // Keyboard Left Arrow
 //#define KEY_DOWN 0x51 // Keyboard Down Arrow
